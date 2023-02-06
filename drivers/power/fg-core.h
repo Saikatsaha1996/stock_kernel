@@ -74,7 +74,7 @@
 #define FG_SRAM_LEN			504
 #define PROFILE_LEN			224
 #define PROFILE_COMP_LEN		148
-#define BUCKET_COUNT			8
+#define BUCKET_COUNT			20
 #define BUCKET_SOC_PCT			(256 / BUCKET_COUNT)
 
 #define KI_COEFF_MAX			62200
@@ -440,6 +440,19 @@ struct fg_chip {
 	struct delayed_work	sram_dump_work;
 	struct fg_circ_buf	ibatt_circ_buf;
 	struct fg_circ_buf	vbatt_circ_buf;
+
+//ASUS_BSP battery safety upgrade +++
+	unsigned long condition1_battery_time;
+	unsigned long condition2_battery_time;
+	int condition1_cycle_count;
+	int condition2_cycle_count;
+	unsigned long condition1_temp_vol_time;
+	unsigned long condition2_temp_vol_time;
+	unsigned long condition1_temp_time;
+	unsigned long condition2_temp_time;
+	unsigned long condition1_vol_time;
+	unsigned long condition2_vol_time;
+//ASUS_BSP battery safety upgrade ---
 };
 
 /* Debugfs data structures are below */
